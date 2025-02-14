@@ -1,23 +1,50 @@
 /* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
 
+/* Global Styles */
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+/* Profile Section Styles */
+.profile-section {
+  text-align: center;
+  padding: 60px 20px 40px;
   background-color: #f0f2f5;
 }
 
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section h1 {
+  font-size: 48px;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Container Styles */
 .container {
   text-align: center;
-  padding: 50px 20px;
+  padding: 40px 20px;
 }
 
-h1 {
-  font-size: 48px;
-  color: #333;
+.container h2 {
+  font-size: 36px;
   margin-bottom: 40px;
+  font-family: "Montserrat", sans-serif;
 }
 
+/* Grid Layout for Tiles */
 .grid {
   display: flex;
   flex-wrap: wrap;
@@ -25,15 +52,19 @@ h1 {
   gap: 30px;
 }
 
+/* Tile Styles */
 .tile {
   position: relative;
   width: 150px;
   height: 150px;
-  background-color: #fff;
   border-radius: 20px;
   text-decoration: none;
-  color: #333;
+  color: #fff;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -45,12 +76,9 @@ h1 {
 
 .tile i {
   font-size: 60px;
-  margin-top: 25px;
-  display: block;
 }
 
 .tile span {
-  display: block;
   margin-top: 10px;
   font-size: 18px;
   font-weight: 700;
@@ -59,32 +87,26 @@ h1 {
 /* Individual Tile Styles */
 .tile.youtube {
   background-color: #ff0000;
-  color: #fff;
 }
 
 .tile.instagram {
-  background-color: #e4405f;
-  color: #fff;
+  background-color: #e1306c;
 }
 
 .tile.twitter {
   background-color: #1da1f2;
-  color: #fff;
 }
 
 .tile.threads {
   background-color: #000000;
-  color: #fff;
 }
 
 .tile.facebook {
-  background-color: #3b5998;
-  color: #fff;
+  background-color: #1877f2;
 }
 
 .tile.tiktok {
-  background-color: #010101;
-  color: #fff;
+  background-color: #000000;
 }
 
 /* Hover Effects */
@@ -93,7 +115,7 @@ h1 {
 }
 
 .tile.instagram:hover {
-  background-color: #d81b60;
+  background-color: #c13584;
 }
 
 .tile.twitter:hover {
@@ -105,7 +127,7 @@ h1 {
 }
 
 .tile.facebook:hover {
-  background-color: #2d4373;
+  background-color: #145dbf;
 }
 
 .tile.tiktok:hover {
@@ -114,6 +136,22 @@ h1 {
 
 /* Responsive Design */
 @media (max-width: 600px) {
+  /* Profile Section Adjustments */
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-section h1 {
+    font-size: 32px;
+  }
+
+  /* Container Adjustments */
+  .container h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  /* Grid Adjustments */
   .grid {
     gap: 20px;
   }
@@ -123,12 +161,8 @@ h1 {
   }
   .tile i {
     font-size: 48px;
-    margin-top: 20px;
   }
   .tile span {
     font-size: 16px;
-  }
-  h1 {
-    font-size: 36px;
   }
 }
