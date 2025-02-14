@@ -76,6 +76,7 @@ body {
 
 .tile i {
   font-size: 60px;
+  color: #fff;
 }
 
 .tile span {
@@ -84,13 +85,13 @@ body {
   font-weight: 700;
 }
 
-/* Individual Tile Styles */
+/* Individual Tile Colors */
 .tile.youtube {
   background-color: #ff0000;
 }
 
 .tile.instagram {
-  background-color: #e1306c;
+  background-color: #e4405f;
 }
 
 .tile.twitter {
