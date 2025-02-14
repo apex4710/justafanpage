@@ -1,0 +1,134 @@
+/* Import Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background-color: #f0f2f5;
+}
+
+.container {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+h1 {
+  font-size: 48px;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.tile {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #333;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tile:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.tile i {
+  font-size: 60px;
+  margin-top: 25px;
+  display: block;
+}
+
+.tile span {
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Individual Tile Styles */
+.tile.youtube {
+  background-color: #ff0000;
+  color: #fff;
+}
+
+.tile.instagram {
+  background-color: #e4405f;
+  color: #fff;
+}
+
+.tile.twitter {
+  background-color: #1da1f2;
+  color: #fff;
+}
+
+.tile.threads {
+  background-color: #000000;
+  color: #fff;
+}
+
+.tile.facebook {
+  background-color: #3b5998;
+  color: #fff;
+}
+
+.tile.tiktok {
+  background-color: #010101;
+  color: #fff;
+}
+
+/* Hover Effects */
+.tile.youtube:hover {
+  background-color: #cc0000;
+}
+
+.tile.instagram:hover {
+  background-color: #d81b60;
+}
+
+.tile.twitter:hover {
+  background-color: #0d95e8;
+}
+
+.tile.threads:hover {
+  background-color: #333333;
+}
+
+.tile.facebook:hover {
+  background-color: #2d4373;
+}
+
+.tile.tiktok:hover {
+  background-color: #1c1c1c;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .grid {
+    gap: 20px;
+  }
+  .tile {
+    width: 120px;
+    height: 120px;
+  }
+  .tile i {
+    font-size: 48px;
+    margin-top: 20px;
+  }
+  .tile span {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 36px;
+  }
+}

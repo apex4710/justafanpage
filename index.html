@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Just A Fan - Social Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css"
+        integrity="sha384-GxVuPtN27jimbQwahSVAMAxYrK1kN8IGw0jM2l90Ec9N17CSTlGaHoxZQ2vPBWNb" crossorigin="anonymous">
+    <!-- Include fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;700&family=Open+Sans&display=swap"
+        rel="stylesheet">
+    <!-- Include JavaScript for app opener functionality -->
+    <script defer src="app.js"></script>
+</head>
+
+<body>
+    <div class="hero">
+        <h1>Just A Fan</h1>
+        <p>Your gateway to my world</p>
+        <a href="#connect" class="btn">Connect with Me</a>
+    </div>
+    <div class="container" id="connect">
+        <h2>Follow Me On</h2>
+        <div class="grid">
+            <!-- Tiles with enhanced design -->
+            <a href="https://www.youtube.com/@justafan1017" class="tile youtube" data-app="youtube">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube</span>
+            </a>
+            <a href="https://www.instagram.com/justafanofficialig/" class="tile instagram" data-app="instagram">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://x.com/JustAFan1017" class="tile twitter" data-app="twitter">
+                <i class="fab fa-twitter"></i>
+                <span>Twitter/X</span>
+            </a>
+            <a href="https://www.threads.net/@justafanofficialig" class="tile threads" data-app="threads">
+                <i class="fas fa-hashtag"></i>
+                <span>Threads</span>
+            </a>
+            <a href="https://www.facebook.com/juastafan" class="tile facebook" data-app="facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="https://www.tiktok.com/@justafan1017" class="tile tiktok" data-app="tiktok">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+        </div>
+    </div>
+    <!-- Include Vanilla Tilt.js -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelectorAll(".tile"), {
+            max: 15,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+        });
+    </script>
+</body>
+
+</html>
