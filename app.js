@@ -21,13 +21,16 @@ document.addEventListener("DOMContentLoaded", function () {
           appUrlScheme = "twitter://user?screen_name=JustAFan1017";
           break;
         case "threads":
-          appUrlScheme = "threads://user?username=justafanofficialig";
+          // Threads app URL scheme
+          appUrlScheme = "threads://user-profile/justafanofficialig";
           break;
         case "facebook":
+          // Facebook app URL scheme using fb://profile/
           appUrlScheme = "fb://profile/juastafan";
           break;
         case "tiktok":
-          appUrlScheme = "snssdk1233://user/profile/justafan1017";
+          // TikTok app URL scheme
+          appUrlScheme = "tiktok://user/@justafan1017";
           break;
         default:
           appUrlScheme = webUrl;
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location = appUrlScheme;
         setTimeout(() => {
           window.open(webUrl, "_blank");
-        }, 1000);
+        }, 1500);
       }
 
       if (/android/i.test(userAgent)) {
