@@ -1,5 +1,16 @@
 /* Import Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@600&family=Roboto+Slab:wght@400;700&display=swap");
+
+/* Font Styles */
+/* Use Poppins for main heading */
+.profile-section h1 {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Use Roboto Slab for subheadings */
+.container h2 {
+  font-family: "Roboto Slab", serif;
+}
 
 /* Global Styles */
 body {
@@ -7,15 +18,29 @@ body {
   font-family: "Montserrat", sans-serif;
   background-color: #f0f4f8;
   color: #333;
+  cursor: url("cursor.png"), auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Profile Section Styles */
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .profile-section {
+  background-color: #1e1e1e;
+}
+
+/* Profile Section */
 .profile-section {
   text-align: center;
   padding: 60px 20px 40px;
   background-color: #f0f2f5;
+  transition: background-color 0.3s ease;
 }
 
+/* Profile Picture */
 .profile-pic {
   width: 180px;
   height: 180px;
@@ -24,12 +49,11 @@ body {
   margin-bottom: 20px;
   border: 5px solid #fff;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
 }
 
-.profile-section h1 {
-  font-size: 48px;
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
+.profile-pic:hover {
+  transform: rotate(360deg);
 }
 
 /* Container Styles */
@@ -41,7 +65,6 @@ body {
 .container h2 {
   font-size: 36px;
   margin-bottom: 40px;
-  font-family: "Montserrat", sans-serif;
 }
 
 /* Grid Layout for Tiles */
@@ -66,73 +89,202 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
+/* Neon Glow Effect on Hover */
 .tile:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .tile i {
   font-size: 60px;
-  color: #fff;
+  transition: transform 0.3s ease;
 }
 
+.tile:hover i {
+  transform: scale(1.1);
+}
+
+/* Tile Text */
 .tile span {
   margin-top: 10px;
   font-size: 18px;
   font-weight: 700;
 }
 
-/* Individual Tile Colors */
+/* Individual Tile Colors and Glow Effects */
+
+/* YouTube */
 .tile.youtube {
   background-color: #ff0000;
 }
 
-.tile.instagram {
-  background-color: #e4405f;
+.tile.youtube:hover {
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.4), 0 0 10px rgba(255, 0, 0, 0.5),
+    0 0 20px rgba(255, 0, 0, 0.6);
 }
 
+.tile.youtube:hover i,
+.tile.youtube:hover span {
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 15px rgba(255, 0, 0, 0.8);
+}
+
+/* Instagram */
+.tile.instagram {
+  background-color: #c13584;
+}
+
+.tile.instagram:hover {
+  box-shadow: 0 0 5px rgba(193, 53, 132, 0.4), 0 0 10px rgba(193, 53, 132, 0.5),
+    0 0 20px rgba(193, 53, 132, 0.6);
+}
+
+.tile.instagram:hover i,
+.tile.instagram:hover span {
+  text-shadow: 0 0 5px rgba(193, 53, 132, 0.6), 0 0 15px rgba(193, 53, 132, 0.8);
+}
+
+/* Twitter/X */
 .tile.twitter {
   background-color: #1da1f2;
 }
 
+.tile.twitter:hover {
+  box-shadow: 0 0 5px rgba(29, 161, 242, 0.4), 0 0 10px rgba(29, 161, 242, 0.5),
+    0 0 20px rgba(29, 161, 242, 0.6);
+}
+
+.tile.twitter:hover i,
+.tile.twitter:hover span {
+  text-shadow: 0 0 5px rgba(29, 161, 242, 0.6), 0 0 15px rgba(29, 161, 242, 0.8);
+}
+
+/* Threads */
 .tile.threads {
   background-color: #000000;
 }
 
+.tile.threads:hover {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.tile.threads:hover i,
+.tile.threads:hover span {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Facebook */
 .tile.facebook {
   background-color: #1877f2;
 }
 
+.tile.facebook:hover {
+  box-shadow: 0 0 5px rgba(24, 119, 242, 0.4), 0 0 10px rgba(24, 119, 242, 0.5),
+    0 0 20px rgba(24, 119, 242, 0.6);
+}
+
+.tile.facebook:hover i,
+.tile.facebook:hover span {
+  text-shadow: 0 0 5px rgba(24, 119, 242, 0.6), 0 0 15px rgba(24, 119, 242, 0.8);
+}
+
+/* TikTok */
 .tile.tiktok {
   background-color: #000000;
 }
 
-/* Hover Effects */
-.tile.youtube:hover {
-  background-color: #cc0000;
-}
-
-.tile.instagram:hover {
-  background-color: #c13584;
-}
-
-.tile.twitter:hover {
-  background-color: #0d95e8;
-}
-
-.tile.threads:hover {
-  background-color: #333333;
-}
-
-.tile.facebook:hover {
-  background-color: #145dbf;
-}
-
 .tile.tiktok:hover {
-  background-color: #1c1c1c;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.tile.tiktok:hover i,
+.tile.tiktok:hover span {
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+/* Dark Mode Tile Adjustments */
+body.dark-mode .tile.threads,
+body.dark-mode .tile.tiktok {
+  background-color: #ffffff;
+}
+
+body.dark-mode .tile.threads:hover,
+body.dark-mode .tile.tiktok:hover {
+  background-color: #e0e0e0;
+}
+
+body.dark-mode .tile.threads i,
+body.dark-mode .tile.tiktok i,
+body.dark-mode .tile.threads span,
+body.dark-mode .tile.tiktok span {
+  color: #000000;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  transition: background-color 0.4s;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: transform 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded Slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+/* Wave Divider */
+.wave {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: url("wave.svg");
+  background-size: cover;
 }
 
 /* Responsive Design */
@@ -142,6 +294,7 @@ body {
     width: 120px;
     height: 120px;
   }
+
   .profile-section h1 {
     font-size: 32px;
   }
@@ -156,13 +309,16 @@ body {
   .grid {
     gap: 20px;
   }
+
   .tile {
     width: 120px;
     height: 120px;
   }
+
   .tile i {
     font-size: 48px;
   }
+
   .tile span {
     font-size: 16px;
   }

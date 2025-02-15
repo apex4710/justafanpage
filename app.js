@@ -57,3 +57,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing code for app links...
+
+  // Dark Mode Toggle
+  const toggleSwitch = document.getElementById("mode-toggle");
+
+  // Load and apply saved theme preference
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleSwitch.checked = true;
+  }
+
+  // Event listener for toggle switch
+  toggleSwitch.addEventListener("change", function () {
+    if (this.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+  });
+});

@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha384-<new-integrity-hash>" crossorigin="anonymous">
+        integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous">
     <!-- Include JavaScript for app opener functionality -->
     <script defer src="app.js"></script>
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Include the particles.js library -->
+    <script src="particles.js"></script>
 </head>
 
 <body>
@@ -22,6 +24,15 @@
         <img src="JAFlogo.png" alt="Just A Fan" class="profile-pic">
         <h1>Just A Fan</h1>
     </div>
+
+    <!-- Add this after the profile section in your index.html -->
+    <div class="wave"></div>
+
+    <!-- Dark Mode Toggle Switch -->
+    <label class="switch">
+        <input type="checkbox" id="mode-toggle">
+        <span class="slider round"></span>
+    </label>
 
     <!-- Container -->
     <div class="container">
@@ -44,7 +55,7 @@
             </a>
             <!-- Threads Tile -->
             <a href="https://www.threads.net/@justafanofficialig" class="tile threads" data-app="threads">
-                <i class="fa-solid fa-hashtag"></i>
+                <i class="fa-brands fa-hashtag"></i>
                 <span>Threads</span>
             </a>
             <!-- Facebook Tile -->
