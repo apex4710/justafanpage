@@ -150,17 +150,17 @@ body.dark-mode .profile-section {
 
 /* Twitter/X */
 .tile.twitter {
-  background-color: #1da1f2;
+  background-color: #000000;
 }
 
 .tile.twitter:hover {
-  box-shadow: 0 0 5px rgba(29, 161, 242, 0.4), 0 0 10px rgba(29, 161, 242, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .tile.twitter:hover i,
 .tile.twitter:hover span {
-  text-shadow: 0 0 5px rgba(29, 161, 242, 0.6),
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
     0 0 15px rgba(255, 255, 255, 0.8);
 }
 
@@ -214,19 +214,23 @@ body.dark-mode .profile-section {
 
 /* Dark Mode Tile Adjustments */
 body.dark-mode .tile.threads,
-body.dark-mode .tile.tiktok {
-  background-color: #3d3d3d;
+body.dark-mode .tile.tiktok,
+body.dark-mode .tile.twitter {
+  background-color: #242424;
 }
 
 body.dark-mode .tile.threads:hover,
-body.dark-mode .tile.tiktok:hover {
-  background-color: #3d3d3d;
+body.dark-mode .tile.tiktok:hover,
+body.dark-mode .tile.twitter :hover {
+  background-color: #2a2a2a;
 }
 
 body.dark-mode .tile.threads i,
 body.dark-mode .tile.tiktok i,
+body.dark-mode .tile.twitter i,
 body.dark-mode .tile.threads span,
-body.dark-mode .tile.tiktok span {
+body.dark-mode .tile.tiktok span,
+body.dark-mode .tile.twitter span {
   color: #ffffff;
 }
 
