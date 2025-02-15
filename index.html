@@ -8,68 +8,81 @@
     <!-- External CSS -->
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha384-iw3OoTErCYJJB9mCa8LNS2hbsQ7M3C0EpIsO/H5+EGAkPGc6rk+V8i04oW/K5xq0" crossorigin="anonymous">
-    <!-- Include JavaScript for app opener functionality -->
-    <script defer src="app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous">
+
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Include the particles.js library -->
-    <script src="particles.js"></script>
+    <!-- Include JavaScript for app opener functionality -->
+    <script defer src="app.js"></script>
+    <!-- Include the particles.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 
 <body>
+
     <!-- Profile Section -->
     <div class="profile-section">
         <img src="JAFlogo.png" alt="Just A Fan" class="profile-pic">
         <h1>Just A Fan</h1>
+
+        <!-- Dark Mode Toggle Switch -->
+        <label class="switch" aria-label="Toggle dark mode">
+            <input type="checkbox" id="mode-toggle">
+            <span class="slider round"></span>
+        </label>
+
     </div>
 
-    <!-- Add this after the profile section in your index.html -->
+    <!-- Wave Divider -->
     <div class="wave"></div>
-
-    <!-- Dark Mode Toggle Switch -->
-    <label class="switch">
-        <input type="checkbox" id="mode-toggle">
-        <span class="slider round"></span>
-    </label>
 
     <!-- Container -->
     <div class="container">
         <h2>Connect with Me</h2>
         <div class="grid">
             <!-- YouTube Tile -->
-            <a href="https://www.youtube.com/@justafan1017" class="tile youtube" data-app="youtube">
-                <i class="fa-brands fa-youtube"></i>
+            <a href="https://www.youtube.com/@justafan1017" class="tile youtube" data-app="youtube"
+                aria-label="Visit Just A Fan on YouTube">
+                <i class="fa-brands fa-youtube" aria-hidden="true"></i>
                 <span>YouTube</span>
             </a>
             <!-- Instagram Tile -->
-            <a href="https://www.instagram.com/justafanofficialig/" class="tile instagram" data-app="instagram">
-                <i class="fa-brands fa-instagram"></i>
+            <a href="https://www.instagram.com/justafanofficialig/" class="tile instagram" data-app="instagram"
+                aria-label="Visit Just A Fan on Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                 <span>Instagram</span>
             </a>
             <!-- Twitter/X Tile -->
-            <a href="https://x.com/JustAFan1017" class="tile twitter" data-app="twitter">
-                <i class="fa-brands fa-twitter"></i>
-                <span>Twitter/X</span>
+            <a href="https://x.com/JustAFan1017" class="tile twitter" data-app="twitter"
+                aria-label="Visit Just A Fan on Twitter">
+                <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                <span>X/Twitter</span>
             </a>
             <!-- Threads Tile -->
-            <a href="https://www.threads.net/@justafanofficialig" class="tile threads" data-app="threads">
-                <i class="fa-brands fa-hashtag"></i>
+            <a href="https://www.threads.net/@justafanofficialig" class="tile threads" data-app="threads"
+                aria-label="Visit Just A Fan on Threads">
+                <i class="fa-brands fa-threads" aria-hidden="true"></i>
                 <span>Threads</span>
             </a>
             <!-- Facebook Tile -->
-            <a href="https://www.facebook.com/juastafan" class="tile facebook" data-app="facebook">
-                <i class="fa-brands fa-facebook-f"></i>
+            <a href="https://www.facebook.com/justafan" class="tile facebook" data-app="facebook"
+                aria-label="Visit Just A Fan on Facebook">
+                <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                 <span>Facebook</span>
             </a>
             <!-- TikTok Tile -->
-            <a href="https://www.tiktok.com/@justafan1017" class="tile tiktok" data-app="tiktok">
-                <i class="fa-brands fa-tiktok"></i>
+            <a href="https://www.tiktok.com/@justafan1017" class="tile tiktok" data-app="tiktok"
+                aria-label="Visit Just A Fan on TikTok">
+                <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
                 <span>TikTok</span>
             </a>
         </div>
     </div>
+
+    <!-- Particles.js Container -->
+    <div id="particles-js"></div>
 </body>
 
 </html>
