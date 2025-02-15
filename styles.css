@@ -129,7 +129,7 @@ body.dark-mode .profile-section {
 
 .tile.youtube:hover i,
 .tile.youtube:hover span {
-  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 15px rgba(255, 0, 0, 0.8);
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 /* Instagram */
@@ -144,7 +144,8 @@ body.dark-mode .profile-section {
 
 .tile.instagram:hover i,
 .tile.instagram:hover span {
-  text-shadow: 0 0 5px rgba(193, 53, 132, 0.6), 0 0 15px rgba(193, 53, 132, 0.8);
+  text-shadow: 0 0 5px rgba(193, 53, 132, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 /* Twitter/X */
@@ -159,7 +160,8 @@ body.dark-mode .profile-section {
 
 .tile.twitter:hover i,
 .tile.twitter:hover span {
-  text-shadow: 0 0 5px rgba(29, 161, 242, 0.6), 0 0 15px rgba(29, 161, 242, 0.8);
+  text-shadow: 0 0 5px rgba(29, 161, 242, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 /* Threads */
@@ -190,7 +192,8 @@ body.dark-mode .profile-section {
 
 .tile.facebook:hover i,
 .tile.facebook:hover span {
-  text-shadow: 0 0 5px rgba(24, 119, 242, 0.6), 0 0 15px rgba(24, 119, 242, 0.8);
+  text-shadow: 0 0 5px rgba(24, 119, 242, 0.6),
+    0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 /* TikTok */
@@ -212,19 +215,19 @@ body.dark-mode .profile-section {
 /* Dark Mode Tile Adjustments */
 body.dark-mode .tile.threads,
 body.dark-mode .tile.tiktok {
-  background-color: #ffffff;
+  background-color: #3d3d3d;
 }
 
 body.dark-mode .tile.threads:hover,
 body.dark-mode .tile.tiktok:hover {
-  background-color: #e0e0e0;
+  background-color: #3d3d3d;
 }
 
 body.dark-mode .tile.threads i,
 body.dark-mode .tile.tiktok i,
 body.dark-mode .tile.threads span,
 body.dark-mode .tile.tiktok span {
-  color: #000000;
+  color: #ffffff;
 }
 
 /* Toggle Switch Styles */
