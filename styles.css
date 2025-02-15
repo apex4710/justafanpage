@@ -285,55 +285,163 @@ input:checked + .slider:before {
   border-radius: 34px;
 }
 
-/* Fun Animated Confetti Wave Divider */
+:root {
+  /* Light mode variables */
+  --wave-primary-light: #5c8cbb;
+  --wave-secondary-light: #7ba7d4;
+  --wave-background-light: rgba(92, 140, 187, 0.1);
+  --wave-accent-light: rgba(255, 255, 255, 0.8);
+
+  /* Dark mode variables */
+  --wave-primary-dark: #808080;
+  --wave-secondary-dark: #666666;
+  --wave-background-dark: rgba(71, 71, 71, 0.458);
+  --wave-accent-dark: rgba(255, 255, 255, 0.05);
+}
+
+/* Wave container with theme awareness */
 .wave {
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 120px;
   overflow: hidden;
-  background-color: #f0f4f800; /* Background color matching your site */
 }
 
+/* Theme-specific styles */
+@media (prefers-color-scheme: light) {
+  .wave {
+    background: linear-gradient(
+      180deg,
+      var(--wave-background-light) 0%,
+      transparent 100%
+    );
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wave {
+    background: linear-gradient(
+      180deg,
+      var(--wave-background-dark) 0%,
+      transparent 100%
+    );
+  }
+}
+
+/* Primary wave layer */
 .wave::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 200%; /* Extend beyond the viewport for animation */
+  width: 200%;
   height: 100%;
-  background-image: radial-gradient(
-      circle at 10% 20%,
-      #ff0080 3%,
-      transparent 0%
-    ),
-    /* Pink dot */
-      radial-gradient(circle at 30% 80%, #ff8c00 3%, transparent 0%),
-    /* Orange dot */
-      radial-gradient(circle at 70% 50%, #ffff00 3%, transparent 0%),
-    /* Yellow dot */
-      radial-gradient(circle at 90% 30%, #008000 3%, transparent 0%),
-    /* Green dot */
-      radial-gradient(circle at 50% 50%, #0000ff 3%, transparent 0%); /* Blue dot */
-  background-size: 50px 50px;
-  background-repeat: repeat;
-  animation: confettiMove 20s linear infinite;
-  clip-path: polygon(
-    0% 70%,
-    25% 80%,
-    50% 60%,
-    75% 80%,
-    100% 70%,
-    100% 100%,
-    0% 100%
-  );
+  top: 50%;
+  left: 0;
+  border-radius: 37% 63% 59% 41% / 45% 42% 58% 55%;
+  transform: translate(-25%, -75%);
+  animation: waveMove 15s infinite linear;
 }
 
-@keyframes confettiMove {
-  from {
-    transform: translateX(0);
+/* Secondary wave layer */
+.wave::after {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  top: 50%;
+  left: 0;
+  border-radius: 37% 63% 65% 35% / 40% 45% 55% 60%;
+  transform: translate(-25%, -70%);
+  animation: waveMove 12s infinite linear reverse;
+}
+
+/* Theme-specific wave colors */
+@media (prefers-color-scheme: light) {
+  .wave::before {
+    background: linear-gradient(
+      45deg,
+      var(--wave-primary-light),
+      var(--wave-secondary-light)
+    );
+    opacity: 0.7;
   }
-  to {
-    transform: translateX(-50%);
+
+  .wave::after {
+    background: linear-gradient(
+      45deg,
+      var(--wave-secondary-light),
+      var(--wave-primary-light)
+    );
+    opacity: 0.5;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wave::before {
+    background: linear-gradient(
+      45deg,
+      var(--wave-primary-dark),
+      var(--wave-secondary-dark)
+    );
+    opacity: 0.7;
+  }
+
+  .wave::after {
+    background: linear-gradient(
+      45deg,
+      var(--wave-secondary-dark),
+      var(--wave-primary-dark)
+    );
+    opacity: 0.5;
+  }
+}
+
+/* Ripple effect overlay */
+.wave .ripple {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: 50px 50px;
+  animation: rippleEffect 20s infinite linear;
+}
+
+/* Theme-specific ripple styles */
+@media (prefers-color-scheme: light) {
+  .wave .ripple {
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      var(--wave-accent-light) 5%,
+      transparent 6%
+    );
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .wave .ripple {
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      var(--wave-accent-dark) 5%,
+      transparent 6%
+    );
+    opacity: 0.1;
+  }
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translate(-25%, -75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-25%, -75%) rotate(360deg);
+  }
+}
+
+@keyframes rippleEffect {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
   }
 }
 
