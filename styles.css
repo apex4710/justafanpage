@@ -124,7 +124,7 @@ body.dark-mode .profile-section {
 
 .tile.youtube:hover {
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.4), 0 0 10px rgba(255, 0, 0, 0.5),
-    0 0 20px rgba(255, 0, 0, 0.6);
+    0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .tile.youtube:hover i,
@@ -139,7 +139,7 @@ body.dark-mode .profile-section {
 
 .tile.instagram:hover {
   box-shadow: 0 0 5px rgba(193, 53, 132, 0.4), 0 0 10px rgba(193, 53, 132, 0.5),
-    0 0 20px rgba(193, 53, 132, 0.6);
+    0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .tile.instagram:hover i,
@@ -155,7 +155,7 @@ body.dark-mode .profile-section {
 
 .tile.twitter:hover {
   box-shadow: 0 0 5px rgba(29, 161, 242, 0.4), 0 0 10px rgba(29, 161, 242, 0.5),
-    0 0 20px rgba(29, 161, 242, 0.6);
+    0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .tile.twitter:hover i,
@@ -187,7 +187,7 @@ body.dark-mode .profile-section {
 
 .tile.facebook:hover {
   box-shadow: 0 0 5px rgba(24, 119, 242, 0.4), 0 0 10px rgba(24, 119, 242, 0.5),
-    0 0 20px rgba(24, 119, 242, 0.6);
+    0 0 20px rgba(255, 255, 255, 0.8);
 }
 
 .tile.facebook:hover i,
