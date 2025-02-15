@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Existing code for app links...
   const links = document.querySelectorAll(".tile");
 
   links.forEach((link) => {
@@ -56,10 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Existing code for app links...
   // Particles.js initialization with inline configuration
   particlesJS("particles-js", {
     particles: {
