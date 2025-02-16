@@ -95,8 +95,8 @@ body.dark-mode .profile-section {
 /* Neon Glow Effect on Hover */
 .tile:hover {
   transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 30, 30, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.6);
 }
 
 .tile i {
@@ -214,24 +214,33 @@ body.dark-mode .profile-section {
 
 /* Dark Mode Tile Adjustments */
 body.dark-mode .tile.threads,
-body.dark-mode .tile.tiktok,
-body.dark-mode .tile.twitter {
+body.dark-mode .tile.tiktok {
   background-color: #242424;
 }
 
 body.dark-mode .tile.threads:hover,
-body.dark-mode .tile.tiktok:hover,
-body.dark-mode .tile.twitter :hover {
+body.dark-mode .tile.tiktok:hover {
   background-color: #2a2a2a;
 }
 
 body.dark-mode .tile.threads i,
 body.dark-mode .tile.tiktok i,
-body.dark-mode .tile.twitter i,
 body.dark-mode .tile.threads span,
-body.dark-mode .tile.tiktok span,
-body.dark-mode .tile.twitter span {
+body.dark-mode .tile.tiktok span {
   color: #ffffff;
+}
+
+body.dark-mode .tile.twitter {
+  background-color: #242424; /* Twitter */
+}
+
+body.dark-mode .tile.twitter:hover {
+  background-color: #2a2a2a; /* Twitter */
+}
+
+body.dark-mode .tile.twitter i,
+body.dark-mode .tile.twitter span {
+  color: #ffffff; /* Twitter */
 }
 
 /* Toggle Switch Styles */
@@ -285,47 +294,13 @@ input:checked + .slider:before {
   border-radius: 34px;
 }
 
-:root {
-  /* Light mode variables */
-  --wave-primary-light: #5c8cbb;
-  --wave-secondary-light: #7ba7d4;
-  --wave-background-light: rgba(92, 140, 187, 0.1);
-  --wave-accent-light: rgba(255, 255, 255, 0.8);
-
-  /* Dark mode variables */
-  --wave-primary-dark: #808080;
-  --wave-secondary-dark: #666666;
-  --wave-background-dark: rgba(71, 71, 71, 0.458);
-  --wave-accent-dark: rgba(255, 255, 255, 0.05);
-}
-
-/* Wave container with theme awareness */
+/* Dynamic Ocean Wave Animation */
 .wave {
   position: relative;
   width: 100%;
-  height: 120px;
+  height: 80px;
   overflow: hidden;
-}
-
-/* Theme-specific styles */
-@media (prefers-color-scheme: light) {
-  .wave {
-    background: linear-gradient(
-      180deg,
-      var(--wave-background-light) 0%,
-      transparent 100%
-    );
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .wave {
-    background: linear-gradient(
-      180deg,
-      var(--wave-background-dark) 0%,
-      transparent 100%
-    );
-  }
+  background: linear-gradient(180deg, #e0f7ff00 0%, #c5eeff00 100%);
 }
 
 /* Primary wave layer */
@@ -336,9 +311,11 @@ input:checked + .slider:before {
   height: 100%;
   top: 50%;
   left: 0;
+  background: linear-gradient(45deg, #2193b0, #6dd5ed);
   border-radius: 37% 63% 59% 41% / 45% 42% 58% 55%;
   transform: translate(-25%, -75%);
   animation: waveMove 15s infinite linear;
+  opacity: 0.8;
 }
 
 /* Secondary wave layer */
@@ -349,82 +326,29 @@ input:checked + .slider:before {
   height: 100%;
   top: 50%;
   left: 0;
+  background: linear-gradient(45deg, #00b4db, #0083b0);
   border-radius: 37% 63% 65% 35% / 40% 45% 55% 60%;
   transform: translate(-25%, -70%);
   animation: waveMove 12s infinite linear reverse;
+  opacity: 0.6;
 }
 
-/* Theme-specific wave colors */
-@media (prefers-color-scheme: light) {
-  .wave::before {
-    background: linear-gradient(
-      45deg,
-      var(--wave-primary-light),
-      var(--wave-secondary-light)
-    );
-    opacity: 0.7;
-  }
-
-  .wave::after {
-    background: linear-gradient(
-      45deg,
-      var(--wave-secondary-light),
-      var(--wave-primary-light)
-    );
-    opacity: 0.5;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .wave::before {
-    background: linear-gradient(
-      45deg,
-      var(--wave-primary-dark),
-      var(--wave-secondary-dark)
-    );
-    opacity: 0.7;
-  }
-
-  .wave::after {
-    background: linear-gradient(
-      45deg,
-      var(--wave-secondary-dark),
-      var(--wave-primary-dark)
-    );
-    opacity: 0.5;
-  }
-}
-
-/* Ripple effect overlay */
-.wave .ripple {
+/* Floating particles effect */
+.wave .particles {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-size: 50px 50px;
-  animation: rippleEffect 20s infinite linear;
-}
-
-/* Theme-specific ripple styles */
-@media (prefers-color-scheme: light) {
-  .wave .ripple {
-    background-image: radial-gradient(
+  background-image: radial-gradient(
       circle at 50% 50%,
-      var(--wave-accent-light) 5%,
-      transparent 6%
-    );
-    opacity: 0.3;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .wave .ripple {
-    background-image: radial-gradient(
-      circle at 50% 50%,
-      var(--wave-accent-dark) 5%,
-      transparent 6%
-    );
-    opacity: 0.1;
-  }
+      #ffffff00 1px,
+      transparent 1px
+    ),
+    radial-gradient(circle at 70% 30%, #ffffff 1px, transparent 1px),
+    radial-gradient(circle at 30% 70%, #ffffff 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, #ffffff 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: particleFloat 20s infinite linear;
+  opacity: 0.4;
 }
 
 @keyframes waveMove {
@@ -436,12 +360,38 @@ input:checked + .slider:before {
   }
 }
 
-@keyframes rippleEffect {
+@keyframes particleFloat {
   0% {
     background-position: 0% 0%;
   }
   100% {
     background-position: 100% 100%;
+  }
+}
+
+/* Shimmer effect */
+.wave .shimmer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.2) 75%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 200%;
+  animation: shimmerEffect 8s infinite linear;
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 200%;
   }
 }
 
