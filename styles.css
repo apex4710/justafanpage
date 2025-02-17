@@ -13,31 +13,55 @@
 }
 
 /* Global Styles */
+:root {
+  /* Light mode variables */
+  --light-background: #f5f7fa;
+  --light-text: #2d3748;
+  --light-border: #e2e8f0;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --light-accent: #69a8f1;
+
+  /* Dark mode variables */
+  --dark-background: #1a202c;
+  --dark-text: #e2e8f0;
+  --dark-border: #2d3748;
+  --dark-shadow: rgba(0, 0, 0, 0.25);
+  --dark-accent: #3f6d8e;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
-  background-color: #5c8cbb;
-  color: #333;
+  background-color: var(--light-background);
+  color: var(--light-text);
   cursor: auto;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Dark Mode Styles */
 body.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-body.dark-mode .profile-section {
-  background-color: #121212;
+  background-color: var(--dark-background);
+  color: var(--dark-text);
 }
 
 /* Profile Section */
 .profile-section {
   text-align: center;
   padding: 60px 20px 40px;
-  background-color: #5c8cbb;
-  transition: background-color 0.3s ease;
+  background: linear-gradient(
+    to bottom,
+    var(--light-accent),
+    var(--light-background)
+  );
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .profile-section {
+  background: linear-gradient(
+    to bottom,
+    var(--dark-accent),
+    var(--dark-background)
+  );
 }
 
 /* Profile Picture */
@@ -47,9 +71,23 @@ body.dark-mode .profile-section {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 20px;
-  border: 5px solid #fff;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.5s ease;
+  border: 5px solid var(--light-border);
+  box-shadow: 0 5px 15px var(--light-shadow), 0 0 0 2px var(--light-accent);
+  transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+body.dark-mode .profile-pic {
+  border-color: var(--dark-border);
+  box-shadow: 0 5px 15px var(--dark-shadow), 0 0 0 2px var(--dark-accent);
+}
+
+.profile-pic:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--light-shadow), 0 0 0 2px var(--light-accent);
+}
+
+body.dark-mode .profile-pic:hover {
+  box-shadow: 0 8px 20px var(--dark-shadow), 0 0 0 2px var(--dark-accent);
 }
 
 .profile-pic:hover {
@@ -343,9 +381,9 @@ input:checked + .slider:before {
       #ffffff00 1px,
       transparent 1px
     ),
-    radial-gradient(circle at 70% 30%, #ffffff 1px, transparent 1px),
-    radial-gradient(circle at 30% 70%, #ffffff 1px, transparent 1px),
-    radial-gradient(circle at 80% 20%, #ffffff 1px, transparent 1px);
+    radial-gradient(circle at 70% 30%, #ff2828 2px, transparent 1px),
+    radial-gradient(circle at 30% 70%, #3074ac 2px, transparent 1px),
+    radial-gradient(circle at 80% 20%, #03ffcd 2px, transparent 1px);
   background-size: 100px 100px;
   animation: particleFloat 20s infinite linear;
   opacity: 0.4;
@@ -405,6 +443,11 @@ input:checked + .slider:before {
 
   .profile-section h1 {
     font-size: 32px;
+  }
+
+  body.dark-mode .profile-pic {
+    width: 120px;
+    height: 120px;
   }
 
   /* Container Adjustments */

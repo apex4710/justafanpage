@@ -21,18 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
         case "twitter":
           appUrlScheme = "twitter://user?screen_name=JustAFan1017";
           break;
-        //case "threads":
-        // Threads app URL scheme
-        //appUrlScheme = "threads://user-profile/justafanofficialig";
-        //break;
-        //case "facebook":
-        // Facebook app URL scheme using fb://profile/
-        //appUrlScheme = "fb://profile/juastafan";
-        //break;
-        //case "tiktok":
-        // TikTok app URL scheme
-        //appUrlScheme = "tiktok://user/@justafan1017";
-        //break;
         default:
           appUrlScheme = webUrl;
       }
@@ -58,70 +46,90 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Particles.js initialization with inline configuration
-  particlesJS("particles-js", {
-    particles: {
-      number: {
-        value: 50,
-        density: {
-          enable: true,
-          value_area: 800,
-        },
-      },
-      color: {
-        value: "#ffffff",
-      },
-      shape: {
-        type: "circle",
-        stroke: {
-          width: 0,
-          color: "#000000",
-        },
-      },
-      opacity: {
-        value: 0.5,
-      },
-      size: {
-        value: 5,
-      },
-      line_linked: {
-        enable: true,
-        distance: 150,
-        color: "#ffffff",
-        opacity: 0.4,
-        width: 1,
-      },
-      move: {
-        enable: true,
-        speed: 3,
-      },
-    },
-    interactivity: {
-      detect_on: "canvas",
-      events: {
-        onhover: {
-          enable: true,
-          mode: "grab",
-        },
-        onclick: {
-          enable: true,
-          mode: "push",
-        },
-      },
-      modes: {
-        grab: {
-          distance: 200,
-          line_linked: {
-            opacity: 1,
+  // Function to initialize particles with dynamic colors
+  function initParticles() {
+    // Destroy existing particles instance if it exists
+    if (window.pJSDom && window.pJSDom.length > 0) {
+      window.pJSDom[0].pJS.fn.vendors.destroypJS();
+      window.pJSDom = [];
+    }
+
+    // Detect if dark mode is enabled
+    const isDarkMode = document.body.classList.contains("dark-mode");
+
+    // Set particle and line colors based on the theme
+    const particleColor = isDarkMode ? "#ffffff" : "#000000"; // White particles in dark mode, black in light mode
+    const lineColor = isDarkMode ? "#ffffff" : "#000000";
+
+    // Initialize particles.js with dynamic colors
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 50,
+          density: {
+            enable: true,
+            value_area: 800,
           },
         },
-        push: {
-          particles_nb: 4,
+        color: {
+          value: particleColor,
+        },
+        shape: {
+          type: "circle",
+          stroke: {
+            width: 0,
+            color: particleColor,
+          },
+        },
+        opacity: {
+          value: 0.5,
+        },
+        size: {
+          value: 5,
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: lineColor,
+          opacity: 0.4,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 3,
         },
       },
-    },
-    retina_detect: true,
-  });
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: true,
+            mode: "grab",
+          },
+          onclick: {
+            enable: true,
+            mode: "push",
+          },
+        },
+        modes: {
+          grab: {
+            distance: 200,
+            line_linked: {
+              opacity: 1,
+            },
+          },
+          push: {
+            particles_nb: 4,
+          },
+        },
+      },
+      retina_detect: true,
+    });
+  }
+
+  // Initialize particles on page load
+  initParticles();
+
   // Dark Mode Toggle
   const toggleSwitch = document.getElementById("mode-toggle");
 
@@ -140,5 +148,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("dark-mode");
       localStorage.setItem("theme", "light");
     }
+
+    // Reinitialize particles after theme change
+    initParticles();
   });
 });
