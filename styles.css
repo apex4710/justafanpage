@@ -194,8 +194,8 @@ body.dark-mode .profile-pic:hover {
 }
 
 .tile.twitter:hover {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px rgba(39, 39, 39, 0.4), 0 0 10px rgba(30, 30, 30, 0.6),
+    0 0 20px rgba(55, 55, 55, 0.8);
 }
 
 .tile.twitter i,
@@ -269,17 +269,6 @@ body.dark-mode .tile.tiktok:hover,
 body.dark-mode .tile.threads:hover {
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
     0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.8);
-}
-
-/* Adjust hover for Threads in Dark Mode */
-body.dark-mode .tile.threads:hover {
-  box-shadow: 0 0 5px rgba(255, 214, 0, 0.4), 0 0 10px rgba(255, 214, 0, 0.5),
-    0 0 20px rgba(255, 214, 0, 0.8); /* Golden glow */
-}
-
-body.dark-mode .tile.threads:hover i,
-body.dark-mode .tile.threads:hover span {
-  text-shadow: 0 0 5px rgba(255, 214, 0, 0.6), 0 0 15px rgba(255, 214, 0, 0.8);
 }
 
 /* General Tile Text Color */

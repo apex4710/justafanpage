@@ -4,46 +4,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
   links.forEach((link) => {
     link.addEventListener("click", function (event) {
-      event.preventDefault();
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
 
-      const app = this.getAttribute("data-app");
-      const webUrl = this.getAttribute("href");
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      let appUrlScheme;
+        const app = this.getAttribute("data-app");
+        const webUrl = this.getAttribute("href");
+        const userAgent =
+          navigator.userAgent || navigator.vendor || window.opera;
+        let appUrlScheme;
 
-      switch (app) {
-        case "youtube":
-          appUrlScheme = "vnd.youtube://www.youtube.com/@justafan1017";
-          break;
-        case "instagram":
-          appUrlScheme = "instagram://user?username=justafanofficialig";
-          break;
-        case "twitter":
-          appUrlScheme = "twitter://user?screen_name=JustAFan1017";
-          break;
-        default:
-          appUrlScheme = webUrl;
-      }
+        switch (app) {
+          case "youtube":
+            appUrlScheme = "vnd.youtube://www.youtube.com/@justafan1017";
+            break;
+          case "instagram":
+            appUrlScheme = "instagram://user?username=justafanofficialig";
+            break;
+          case "twitter":
+            appUrlScheme = "twitter://user?screen_name=JustAFan1017";
+            break;
+          default:
+            appUrlScheme = webUrl;
+        }
 
-      // Function to open app or fallback to web
-      function openApp() {
-        window.location = appUrlScheme;
-        setTimeout(() => {
+        // Function to open app or fallback to web
+        function openApp() {
+          window.location = appUrlScheme;
+          setTimeout(() => {
+            window.open(webUrl, "_blank");
+          }, 1500);
+        }
+
+        if (/android/i.test(userAgent)) {
+          // Android device
+          openApp();
+        } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+          // iOS device
+          openApp();
+        } else {
+          // Other devices
           window.open(webUrl, "_blank");
-        }, 1500);
-      }
-
-      if (/android/i.test(userAgent)) {
-        // Android device
-        openApp();
-      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        // iOS device
-        openApp();
-      } else {
-        // Other devices
-        window.open(webUrl, "_blank");
-      }
+        }
+      });
     });
+  });
+
+  // Dark Mode Toggle
+  const toggleSwitch = document.getElementById("mode-toggle");
+
+  // Load and apply saved theme preference
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleSwitch.checked = true;
+  }
+
+  // Initialize particles after theme is applied
+  initParticles();
+
+  // Event listener for toggle switch
+  toggleSwitch.addEventListener("change", function () {
+    if (this.checked) {
+      document.body.classList.add("dark-mode");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark-mode");
+      localStorage.setItem("theme", "light");
+    }
+
+    // Reinitialize particles after theme change
+    initParticles();
   });
 
   // Function to initialize particles with dynamic colors
@@ -126,30 +155,4 @@ document.addEventListener("DOMContentLoaded", function () {
       retina_detect: true,
     });
   }
-
-  // Initialize particles on page load
-  initParticles();
-
-  // Dark Mode Toggle
-  const toggleSwitch = document.getElementById("mode-toggle");
-
-  // Load and apply saved theme preference
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark-mode");
-    toggleSwitch.checked = true;
-  }
-
-  // Event listener for toggle switch
-  toggleSwitch.addEventListener("change", function () {
-    if (this.checked) {
-      document.body.classList.add("dark-mode");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.body.classList.remove("dark-mode");
-      localStorage.setItem("theme", "light");
-    }
-
-    // Reinitialize particles after theme change
-    initParticles();
-  });
 });
