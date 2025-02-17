@@ -382,8 +382,8 @@ input:checked + .slider:before {
       transparent 1px
     ),
     radial-gradient(circle at 70% 30%, #ff2828 2px, transparent 1px),
-    radial-gradient(circle at 30% 70%, #3074ac 2px, transparent 1px),
-    radial-gradient(circle at 80% 20%, #03ffcd 2px, transparent 1px);
+    radial-gradient(circle at 30% 70%, #fcf700 2px, transparent 1px),
+    radial-gradient(circle at 80% 20%, #03dcb1 2px, transparent 1px);
   background-size: 100px 100px;
   animation: particleFloat 20s infinite linear;
   opacity: 0.4;
