@@ -26,7 +26,7 @@
   --dark-text: #e2e8f0;
   --dark-border: #2d3748;
   --dark-shadow: rgba(0, 0, 0, 0.25);
-  --dark-accent: #3f6d8e;
+  --dark-accent: #10293a;
 }
 
 body {
@@ -155,45 +155,52 @@ body.dark-mode .profile-pic:hover {
 
 /* Individual Tile Colors and Glow Effects */
 
+/* Individual Tile Colors and Glow Effects */
+
 /* YouTube */
 .tile.youtube {
-  background-color: #ff0000;
+  background-color: #ff0000; /* YouTube Red */
 }
 
 .tile.youtube:hover {
   box-shadow: 0 0 5px rgba(255, 0, 0, 0.4), 0 0 10px rgba(255, 0, 0, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.8);
+    0 0 20px rgba(255, 0, 0, 0.8);
 }
 
 .tile.youtube:hover i,
 .tile.youtube:hover span {
-  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 15px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 15px rgba(255, 0, 0, 0.8);
 }
 
 /* Instagram */
 .tile.instagram {
-  background-color: #f01a9e;
+  background-color: #e1306c; /* Instagram Pink */
 }
 
 .tile.instagram:hover {
-  box-shadow: 0 0 5px rgba(193, 53, 132, 0.4), 0 0 10px rgba(193, 53, 132, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 5px rgba(225, 48, 108, 0.4), 0 0 10px rgba(225, 48, 108, 0.5),
+    0 0 20px rgba(225, 48, 108, 0.8);
 }
 
 .tile.instagram:hover i,
 .tile.instagram:hover span {
-  text-shadow: 0 0 5px rgba(193, 53, 132, 0.6),
-    0 0 15px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px rgba(225, 48, 108, 0.6), 0 0 15px rgba(225, 48, 108, 0.8);
 }
 
-/* Twitter/X */
+/* X (formerly Twitter) */
 .tile.twitter {
-  background-color: #000000;
+  background-color: #000000; /* Black background for X */
+  color: #ffffff;
 }
 
 .tile.twitter:hover {
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
+    0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.tile.twitter i,
+.tile.twitter span {
+  color: #ffffff; /* White icon and text */
 }
 
 .tile.twitter:hover i,
@@ -204,81 +211,80 @@ body.dark-mode .profile-pic:hover {
 
 /* Threads */
 .tile.threads {
-  background-color: #000000;
+  background-color: #000000; /* Black in both modes */
+  color: #ffffff;
 }
 
 .tile.threads:hover {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 5px rgba(0, 168, 255, 0.4), 0 0 10px rgba(0, 168, 255, 0.5),
+    0 0 20px rgba(0, 168, 255, 0.8); /* Cool blue glow */
 }
 
 .tile.threads:hover i,
 .tile.threads:hover span {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
-    0 0 15px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px rgba(0, 168, 255, 0.6), 0 0 15px rgba(0, 168, 255, 0.8);
 }
 
 /* Facebook */
 .tile.facebook {
-  background-color: #1877f2;
+  background-color: #1877f2; /* Facebook Blue */
 }
 
 .tile.facebook:hover {
   box-shadow: 0 0 5px rgba(24, 119, 242, 0.4), 0 0 10px rgba(24, 119, 242, 0.5),
-    0 0 20px rgba(255, 255, 255, 0.8);
+    0 0 20px rgba(24, 119, 242, 0.8);
 }
 
 .tile.facebook:hover i,
 .tile.facebook:hover span {
-  text-shadow: 0 0 5px rgba(24, 119, 242, 0.6),
-    0 0 15px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px rgba(24, 119, 242, 0.6), 0 0 15px rgba(24, 119, 242, 0.8);
 }
 
 /* TikTok */
 .tile.tiktok {
-  background-color: #000000;
+  background-color: #000000; /* Black in both modes */
+  color: #ffffff;
 }
 
 .tile.tiktok:hover {
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
-    0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 5px #69c9d0, /* TikTok Cyan */ 0 0 10px #ee1d52,
+    /* TikTok Red */ 0 0 15px #ffffff; /* White glow */
 }
 
 .tile.tiktok:hover i,
 .tile.tiktok:hover span {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
-    0 0 15px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 0 5px #69c9d0, 0 0 10px #ee1d52, 0 0 15px #ffffff;
 }
 
-/* Dark Mode Tile Adjustments */
-body.dark-mode .tile.threads,
-body.dark-mode .tile.tiktok {
-  background-color: #242424;
-}
-
-body.dark-mode .tile.threads:hover,
-body.dark-mode .tile.tiktok:hover {
-  background-color: #2a2a2a;
-}
-
-body.dark-mode .tile.threads i,
-body.dark-mode .tile.tiktok i,
-body.dark-mode .tile.threads span,
-body.dark-mode .tile.tiktok span {
+/* Dark Mode Adjustments */
+body.dark-mode .tile.twitter,
+body.dark-mode .tile.tiktok,
+body.dark-mode .tile.threads {
+  background-color: #111111; /* Slightly lighter black for contrast */
   color: #ffffff;
 }
 
-body.dark-mode .tile.twitter {
-  background-color: #242424; /* Twitter */
+body.dark-mode .tile.twitter:hover,
+body.dark-mode .tile.tiktok:hover,
+body.dark-mode .tile.threads:hover {
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-body.dark-mode .tile.twitter:hover {
-  background-color: #2a2a2a; /* Twitter */
+/* Adjust hover for Threads in Dark Mode */
+body.dark-mode .tile.threads:hover {
+  box-shadow: 0 0 5px rgba(255, 214, 0, 0.4), 0 0 10px rgba(255, 214, 0, 0.5),
+    0 0 20px rgba(255, 214, 0, 0.8); /* Golden glow */
 }
 
-body.dark-mode .tile.twitter i,
-body.dark-mode .tile.twitter span {
-  color: #ffffff; /* Twitter */
+body.dark-mode .tile.threads:hover i,
+body.dark-mode .tile.threads:hover span {
+  text-shadow: 0 0 5px rgba(255, 214, 0, 0.6), 0 0 15px rgba(255, 214, 0, 0.8);
+}
+
+/* General Tile Text Color */
+.tile {
+  color: #ffffff;
 }
 
 /* Toggle Switch Styles */
