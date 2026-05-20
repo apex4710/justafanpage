@@ -1,0 +1,577 @@
+/* ─── Fonts ─────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Outfit:wght@300;400;600&display=swap");
+
+/* ─── Design Tokens ──────────────────────────────────────────────── */
+:root {
+  /* Dark (default) */
+  --bg: #07080f;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.1);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(255, 255, 255, 0.22);
+  --text-primary: #eef0ff;
+  --text-secondary: #9096c0;
+  --text-muted: #4e5278;
+  --accent: #b19dff;
+  --accent-glow: rgba(177, 157, 255, 0.4);
+
+  /* Platform brand colors */
+  --c-twitter: #e2e8f0; /* light grey — dark mode only */
+  --c-instagram: #e1306c;
+  --c-youtube: #ff2020;
+  --c-tiktok: #5ec8d0;
+  --c-facebook: #2d8af6;
+  --c-threads: #bbbbbb;
+
+  --radius-card: 18px;
+  --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Light Mode ─────────────────────────────────────────────────── */
+body.light-mode {
+  --bg: #f0f1fa;
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: rgba(255, 255, 255, 0.97);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-hover: rgba(0, 0, 0, 0.18);
+  --text-primary: #10132a;
+  --text-secondary: #555a80;
+  --text-muted: #9ca0bf;
+  --accent: #6640e8;
+  --accent-glow: rgba(102, 64, 232, 0.22);
+}
+
+/* X/Twitter: use black in light mode so it's visible on white cards */
+body.light-mode .twitter .card-icon {
+  color: #111111;
+}
+body.light-mode .twitter .card-accent {
+  background: #111111;
+}
+body.light-mode .twitter:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ─── Reset & Base ───────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition:
+    background-color 0.4s ease,
+    color 0.3s ease;
+}
+
+/* ─── Particles Canvas ───────────────────────────────────────────── */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Ambient Background Orbs ────────────────────────────────────── */
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat 18s ease-in-out infinite alternate;
+}
+.orb-1 {
+  width: 560px;
+  height: 560px;
+  background: radial-gradient(circle, #7c3aed, transparent 70%);
+  top: -160px;
+  left: -180px;
+  animation-duration: 22s;
+}
+.orb-2 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #1e40af, transparent 70%);
+  bottom: -110px;
+  right: -130px;
+  animation-duration: 18s;
+  animation-delay: -6s;
+}
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #be185d, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 26s;
+  animation-delay: -12s;
+  opacity: 0.12;
+}
+@keyframes orbFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(30px, 40px) scale(1.08);
+  }
+}
+.orb-3 {
+  animation-name: orbFloat3;
+}
+@keyframes orbFloat3 {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    transform: translate(calc(-50% + 25px), calc(-50% - 30px)) scale(1.1);
+  }
+}
+
+body.light-mode .bg-orb {
+  opacity: 0.12;
+}
+
+/* ─── Dark Mode Toggle ───────────────────────────────────────────── */
+.switch {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.switch input {
+  display: none;
+}
+
+.slider {
+  display: block;
+  width: 64px;
+  height: 34px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 34px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background: var(--accent);
+  border-radius: 50%;
+  top: 3px;
+  left: 4px;
+  transition:
+    transform var(--transition),
+    background var(--transition);
+  box-shadow: 0 0 10px var(--accent-glow);
+  z-index: 0;
+}
+input:checked + .slider::before {
+  transform: translateX(30px);
+}
+.sun-icon,
+.moon-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  z-index: 1;
+  transition: color var(--transition);
+  pointer-events: none;
+}
+.moon-icon {
+  left: 9px;
+}
+.sun-icon {
+  right: 9px;
+}
+.sun-icon {
+  color: #f59e0b;
+}
+.moon-icon {
+  color: #a78bfa;
+}
+
+body.light-mode .moon-icon {
+  color: #c4b5fd;
+}
+body.light-mode .sun-icon {
+  color: #d97706;
+}
+
+/* ─── Main Wrapper ───────────────────────────────────────────────── */
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 60px 20px 40px;
+}
+
+/* ─── Profile Section ────────────────────────────────────────────── */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 44px;
+  animation: fadeUp 0.7s ease both;
+}
+
+/* Avatar ring + glow */
+.avatar-ring {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 22px;
+}
+.avatar-glow {
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #b19dff,
+    #60a5fa,
+    #f472b6,
+    #34d399,
+    #b19dff
+  );
+  animation: spinGlow 5s linear infinite;
+  filter: blur(2px);
+  z-index: 0;
+  opacity: 0.9;
+}
+@keyframes spinGlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.avatar-ring::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: var(--bg);
+  z-index: 1;
+  transition: background 0.4s ease;
+}
+.profile-pic {
+  position: relative;
+  z-index: 2;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 5px auto 0;
+  cursor: pointer;
+  transform-origin: center center;
+}
+/* Click-to-spin */
+.profile-pic.spin-once {
+  will-change: transform;
+  animation: spinFull 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@keyframes spinFull {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.brand-name {
+  font-family: "Cinzel", serif;
+  font-size: clamp(26px, 6vw, 38px);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, var(--text-primary) 40%, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.brand-tagline {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── Links Section ──────────────────────────────────────────────── */
+.links-section {
+  width: 100%;
+  max-width: 440px;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+.section-label {
+  font-family: "Cinzel", serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ─── Link Card ──────────────────────────────────────────────────── */
+.link-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: var(--radius-card);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-decoration: none;
+  color: var(--text-primary);
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    border-color var(--transition),
+    box-shadow var(--transition);
+  /* staggered entrance */
+}
+.link-card:nth-child(1) {
+  animation: fadeUp 0.5s 0.2s ease both;
+}
+.link-card:nth-child(2) {
+  animation: fadeUp 0.5s 0.28s ease both;
+}
+.link-card:nth-child(3) {
+  animation: fadeUp 0.5s 0.36s ease both;
+}
+.link-card:nth-child(4) {
+  animation: fadeUp 0.5s 0.44s ease both;
+}
+.link-card:nth-child(5) {
+  animation: fadeUp 0.5s 0.52s ease both;
+}
+.link-card:nth-child(6) {
+  animation: fadeUp 0.5s 0.6s ease both;
+}
+
+.link-card:hover {
+  transform: translateY(-3px) scale(1.015);
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+}
+
+/* Left color accent bar */
+.card-accent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  border-radius: var(--radius-card) 0 0 var(--radius-card);
+  transition:
+    opacity var(--transition),
+    width var(--transition);
+  opacity: 0.7;
+}
+.link-card:hover .card-accent {
+  opacity: 1;
+  width: 5px;
+}
+
+/* Platform accent colors */
+.twitter .card-accent {
+  background: var(--c-twitter);
+}
+.instagram .card-accent {
+  background: linear-gradient(
+    180deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+}
+.youtube .card-accent {
+  background: var(--c-youtube);
+}
+.tiktok .card-accent {
+  background: linear-gradient(180deg, #69c9d0, #ee1d52);
+}
+.facebook .card-accent {
+  background: var(--c-facebook);
+}
+.threads .card-accent {
+  background: var(--c-threads);
+}
+
+/* Icon */
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  transition:
+    transform var(--transition),
+    background var(--transition);
+  background: rgba(255, 255, 255, 0.06);
+}
+body.light-mode .card-icon {
+  background: rgba(0, 0, 0, 0.05);
+}
+.link-card:hover .card-icon {
+  transform: scale(1.12);
+}
+
+/* Platform icon colors */
+.twitter .card-icon {
+  color: var(--c-twitter);
+}
+.instagram .card-icon {
+  color: var(--c-instagram);
+}
+.youtube .card-icon {
+  color: var(--c-youtube);
+}
+.tiktok .card-icon {
+  color: var(--c-tiktok);
+}
+.facebook .card-icon {
+  color: var(--c-facebook);
+}
+.threads .card-icon {
+  color: var(--c-threads);
+}
+
+/* Platform name */
+.card-name {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+}
+
+/* Arrow */
+.card-arrow {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition:
+    transform var(--transition),
+    color var(--transition);
+}
+.link-card:hover .card-arrow {
+  color: var(--text-secondary);
+  transform: translateX(4px);
+}
+
+/* Hover glow per platform */
+.twitter:hover {
+  box-shadow: 0 8px 30px rgba(231, 231, 231, 0.1);
+}
+.instagram:hover {
+  box-shadow: 0 8px 30px rgba(225, 48, 108, 0.18);
+}
+.youtube:hover {
+  box-shadow: 0 8px 30px rgba(255, 0, 0, 0.18);
+}
+.tiktok:hover {
+  box-shadow: 0 8px 30px rgba(105, 201, 208, 0.15);
+}
+.facebook:hover {
+  box-shadow: 0 8px 30px rgba(24, 119, 242, 0.18);
+}
+.threads:hover {
+  box-shadow: 0 8px 30px rgba(170, 170, 170, 0.12);
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────── */
+.site-footer {
+  margin-top: 48px;
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-align: center;
+  animation: fadeUp 0.5s 0.7s ease both;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .main-wrapper {
+    padding: 50px 16px 36px;
+  }
+  .avatar-ring {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-pic {
+    width: 110px;
+    height: 110px;
+    margin-top: 5px;
+  }
+  .brand-name {
+    font-size: 26px;
+  }
+  .link-card {
+    padding: 14px 16px;
+  }
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+  .card-name {
+    font-size: 14px;
+  }
+}
