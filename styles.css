@@ -52,6 +52,16 @@ body.light-mode .twitter:hover {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
+body.light-mode .threads .card-icon {
+  color: #000000;
+}
+body.light-mode .threads .card-accent {
+  background: #000000;
+}
+body.light-mode .threads:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
 /* ─── Reset & Base ───────────────────────────────────────────────── */
 *,
 *::before,
