@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // App deep-link opener
-  const links = document.querySelectorAll(".tile, .link-card");
+  // ── App deep-link opener ───────────────────────────────────────
+  const links = document.querySelectorAll(".link-card");
 
   links.forEach((link) => {
     link.addEventListener("click", function (event) {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const app = this.getAttribute("data-app");
       const webUrl = this.getAttribute("href");
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
       let appUrlScheme;
 
       switch (app) {
@@ -27,14 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       function openApp() {
         window.location = appUrlScheme;
-        setTimeout(() => {
-          window.open(webUrl, "_blank");
-        }, 1500);
+        setTimeout(() => window.open(webUrl, "_blank"), 1500);
       }
 
-      if (/android/i.test(userAgent)) {
+      if (/android/i.test(ua)) {
         openApp();
-      } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
         openApp();
       } else {
         window.open(webUrl, "_blank");
@@ -46,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const profilePic = document.querySelector(".profile-pic");
   if (profilePic) {
     profilePic.addEventListener("click", function () {
-      if (this.classList.contains("spin-once")) return; // prevent double-trigger
+      if (this.classList.contains("spin-once")) return;
       this.classList.add("spin-once");
       this.addEventListener(
         "animationend",
@@ -58,15 +56,66 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ── Dark/Light Mode Toggle ──────────────────────────────────────
+  // ── Custom cursor ──────────────────────────────────────────────
+  const dot = document.getElementById("cursor-dot");
+  const trail = document.getElementById("cursor-trail");
+
+  // Only run on non-touch devices
+  if (window.matchMedia("(hover: hover)").matches && dot && trail) {
+    let mouseX = 0,
+      mouseY = 0; // real mouse position
+    let trailX = 0,
+      trailY = 0; // lagging trail position
+
+    // Move the sharp dot instantly
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dot.style.left = mouseX + "px";
+      dot.style.top = mouseY + "px";
+    });
+
+    // Lerp the trail smoothly behind
+    (function animateTrail() {
+      trailX += (mouseX - trailX) * 0.12;
+      trailY += (mouseY - trailY) * 0.12;
+      trail.style.left = trailX + "px";
+      trail.style.top = trailY + "px";
+      requestAnimationFrame(animateTrail);
+    })();
+
+    // Grow trail when hovering links/buttons
+    const interactiveEls = document.querySelectorAll(
+      "a, button, label, .profile-pic",
+    );
+    interactiveEls.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        trail.style.transform = "translate(-50%, -50%) scale(1.7)";
+        trail.style.borderColor = "rgba(177,157,255,0.85)";
+      });
+      el.addEventListener("mouseleave", () => {
+        trail.style.transform = "translate(-50%, -50%) scale(1)";
+        trail.style.borderColor = "";
+      });
+    });
+
+    // Hide when mouse leaves the window
+    document.addEventListener("mouseleave", () => {
+      dot.style.opacity = "0";
+      trail.style.opacity = "0";
+    });
+    document.addEventListener("mouseenter", () => {
+      dot.style.opacity = "1";
+      trail.style.opacity = "1";
+    });
+  }
+
   const toggleSwitch = document.getElementById("mode-toggle");
 
   if (localStorage.getItem("theme") === "light") {
     document.body.classList.add("light-mode");
     toggleSwitch.checked = true;
   }
-
-  initParticles();
 
   toggleSwitch.addEventListener("change", function () {
     if (this.checked) {
@@ -76,48 +125,5 @@ document.addEventListener("DOMContentLoaded", function () {
       document.body.classList.remove("light-mode");
       localStorage.setItem("theme", "dark");
     }
-    initParticles();
   });
-
-  // ── Particles ──────────────────────────────────────────────────
-  function initParticles() {
-    if (window.pJSDom && window.pJSDom.length > 0) {
-      window.pJSDom[0].pJS.fn.vendors.destroypJS();
-      window.pJSDom = [];
-    }
-
-    const isLight = document.body.classList.contains("light-mode");
-    const particleColor = isLight ? "#6640e8" : "#b19dff";
-    const lineColor = isLight ? "#6640e8" : "#b19dff";
-
-    particlesJS("particles-js", {
-      particles: {
-        number: { value: 55, density: { enable: true, value_area: 800 } },
-        color: { value: particleColor },
-        shape: { type: "circle" },
-        opacity: { value: isLight ? 0.3 : 0.35, random: true },
-        size: { value: 3, random: true },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: lineColor,
-          opacity: isLight ? 0.18 : 0.22,
-          width: 1,
-        },
-        move: { enable: true, speed: 1.8, random: true, out_mode: "out" },
-      },
-      interactivity: {
-        detect_on: "window", // captures mouse anywhere on page
-        events: {
-          onhover: { enable: true, mode: "grab" },
-          onclick: { enable: true, mode: "push" },
-        },
-        modes: {
-          grab: { distance: 220, line_linked: { opacity: 0.7 } },
-          push: { particles_nb: 5 },
-        },
-      },
-      retina_detect: true,
-    });
-  }
 });
